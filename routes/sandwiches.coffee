@@ -4,16 +4,17 @@ Server = mongo.Server
 Db = mongo.Db
 BSON = mongo.BSONPure
 
-server = new Server process.env.MONGOLAB_URI, 27017, {auto_reconnect: true}
-db = new Db 'sandwichdb', server
+mongoUri = process.env.MONGOLAB_URI || "mongodb://localhost/sandwichdb?auto_reconnnect"
 
-db.open (err, db) ->
+mongo.connect mongoUri, {}, (err, db) ->
   if !err
     console.log "Connected to 'sandwichdb' database"
     db.collection 'sandwiches', {safe:true}, (err, collection) ->
       if err
         console.log "The 'sandwiches' collection doesn't exist. Creating it with sample data..."
         populateDB()
+  else
+    console.log("Could not connect to Mongo " + mongoUri)
 
 exports.findById = (req, res) ->
   id = req.params.id
