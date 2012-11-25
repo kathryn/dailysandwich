@@ -4,7 +4,7 @@ Server = mongo.Server
 Db = mongo.Db
 BSON = mongo.BSONPure
 
-server = new Server 'localhost', 27017, {auto_reconnect: true}
+server = new Server process.env.MONGOLAB_URI, 27017, {auto_reconnect: true}
 db = new Db 'sandwichdb', server
 
 db.open (err, db) ->
