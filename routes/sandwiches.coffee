@@ -55,7 +55,7 @@ exports.updateSandwich = (req, res) ->
         res.send(sandwich);
             
 
-exports.deleteSandiwch = (req, res) ->
+exports.deleteSandwich = (req, res) ->
   id = req.params.id
   console.log('Deleting sandwich: ' + id)
   db.collection 'sandwiches', (err, collection) ->

@@ -1,0 +1,29 @@
+body {
+  width: 370px;
+  margin: auto;
+}
+
+.sandwich_item {
+  padding: 5px;
+  position:relative;
+  min-height:24px;
+}
+.sandwich_item:hover {
+  background-color: whitesmoke;
+}
+
+.sandwich_item .body {
+  width:320px;
+  display:inline-block;
+}
+
+.sandwich_item .remove {
+  visibility: hidden;
+  position:absolute;
+  right:5px;
+  top:2px;
+}
+
+.sandwich_item:hover .remove {
+  visibility: visible;
+}
