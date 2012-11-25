@@ -4,10 +4,13 @@ Server = mongo.Server
 Db = mongo.Db
 BSON = mongo.BSONPure
 
+db = null
+
 mongoUri = process.env.MONGOLAB_URI || "mongodb://localhost/sandwichdb?auto_reconnnect"
 
-mongo.connect mongoUri, {}, (err, db) ->
+mongo.connect mongoUri, {}, (err, database) ->
   if !err
+    db = database
     console.log "Connected to 'sandwichdb' database"
     db.collection 'sandwiches', {safe:true}, (err, collection) ->
       if err
